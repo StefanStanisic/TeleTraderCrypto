@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+
 import NavigationBar from './components/navbar/navbar.componet';
 
 
@@ -10,9 +11,6 @@ function App() {
   return (
     <Fragment>
       <NavigationBar />
-      <div className="App">
-        <h1>Hello</h1>
-      </div>
     </Fragment>
   );
 }
