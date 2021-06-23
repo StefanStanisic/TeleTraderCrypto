@@ -4,7 +4,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 
 
@@ -29,9 +30,9 @@ const NavigationBar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link as={Link} exact={true} to="/">Home</Nav.Link>
+              <Nav.Link as={Link} exact={`true`} to="/">Home</Nav.Link>
               {
-                userLoggedIn && <Nav.Link as={Link} exact={true} to="/profile">Profile</Nav.Link>
+                !userLoggedIn ? <Redirect to="/" /> : <Nav.Link as={Link} exact={`true`} to="/profile">Profile</Nav.Link>
               }
             </Nav>
             {

@@ -53,12 +53,6 @@ const TableComponent = () => {
         default:
       }
     }
-
-    if (Array.isArray(object[1]) && pairRefs.current.BTCEUR === object[0]) setBTCToEUR(object[1])
-    if (Array.isArray(object[1]) && pairRefs.current.ETHUSD === object[0]) setETHToUSD(object[1]) 
-    if (Array.isArray(object[1]) && pairRefs.current.BTCUSD === object[0]) setBTCToUSD(object[1])
-    if (Array.isArray(object[1]) && pairRefs.current.ETHEUR === object[0]) setETHToEUR(object[1])
-    if (Array.isArray(object[1]) && pairRefs.current.EOSUSD === object[0]) setEOSToUSD(object[1])
   }
 
   useEffect(() => {
@@ -68,31 +62,26 @@ const TableComponent = () => {
 
         ws.onopen = function () {
           let btcToUSD = JSON.stringify({
-            type: 'btcToUSD',
             event: 'subscribe',
             channel: 'ticker',
             symbol: 'tBTCUSD'
           })
           let btcToEUR = JSON.stringify({
-            type: 'btcToEUR',
             event: 'subscribe',
             channel: 'ticker',
             symbol: 'tBTCEUR'
           })
           let ethToUSD = JSON.stringify({
-            type: 'ethToUSD',
             event: 'subscribe',
             channel: 'ticker',
             symbol: 'tETHUSD'
           })
           let ethToEUR = JSON.stringify({
-            type: 'ethToEUR',
             event: 'subscribe',
             channel: 'ticker',
             symbol: 'tETHEUR'
           })
           let eosToUSD = JSON.stringify({
-            type: 'eosToUSD',
             event: 'subscribe',
             channel: 'ticker',
             symbol: 'tEOSUSD'
@@ -126,37 +115,37 @@ const TableComponent = () => {
   }, []);
 
   let btcToUSDData = {
-    current_value: btcToUSD[0],
-    volume: (btcToUSD[7] * btcToUSD[0]).toFixed(2),
+    current_value: (btcToUSD[6] * 1).toFixed(2),
+    volume: (btcToUSD[7] * btcToUSD[6]).toFixed(2),
     daily_change: (btcToUSD[5] * 100).toFixed(2)
   }
 
   let btcToEURData = {
-    current_value: btcToEUR[0],
-    volume: (btcToEUR[7] * btcToEUR[0]).toFixed(2),
+    current_value: (btcToEUR[6] * 1).toFixed(2),
+    volume: (btcToEUR[7] * btcToEUR[6]).toFixed(2),
     daily_change:(btcToEUR[5] * 100).toFixed(2)
   }
 
   let ethToUSDData = {
-    current_value: ethToUSD[0],
-    volume: (ethToUSD[7] * ethToUSD[0]).toFixed(2),
+    current_value: (ethToUSD[6] * 1).toFixed(2),
+    volume: (ethToUSD[7] * ethToUSD[6]).toFixed(2),
     daily_change: (ethToUSD[5] * 100).toFixed(2)
   }
 
   let ethToEURData = {
-    current_value: ethToEUR[0],
-    volume: (ethToEUR[7] * ethToEUR[0]).toFixed(2),
+    current_value: (ethToEUR[6] * 1).toFixed(2),
+    volume: (ethToEUR[7] * ethToEUR[6]).toFixed(2),
     daily_change: (ethToEUR[5] * 100).toFixed(2)
   }
 
   let eosToUSDData = {
-    current_value: eosToUSD[0],
-    volume: (eosToUSD[7] * eosToUSD[0]).toFixed(2),
+    current_value: (eosToUSD[6] * 1).toFixed(2),
+    volume: (eosToUSD[7] * eosToUSD[6]).toFixed(2),
     daily_change: (eosToUSD[5] * 100).toFixed(2)
   }
 
   return (
-    <Table striped bordered hover className='table'>
+    <Table striped bordered hover className='table' responsive="sm">
       <thead>
         <tr>
           <th>#</th>

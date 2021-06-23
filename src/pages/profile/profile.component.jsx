@@ -16,7 +16,6 @@ const ProfilePage = () => {
 }
 
   const toggleAvatar = () => {
-    console.log(getRandomNumber(1, 100));
     setAvatar(`https://api.hello-avatar.com/adorables/${getRandomNumber(1, 100)}`);
     setIsAvatarToggled(!isAvatarToggled);
   }

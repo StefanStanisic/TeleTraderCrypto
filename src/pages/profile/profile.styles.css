@@ -1,9 +1,6 @@
 .profile-wrapper {
-  margin: 30px 40px;
-  /* display: flex;
-  flex-flow: row wrap; */
-}
-
-.toggle-button {
-  
+  margin: 50px 40px 30px 60px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
