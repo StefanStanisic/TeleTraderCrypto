@@ -1,11 +1,12 @@
 import React from 'react';
 
 import './profile-picture.styles.css';
+import image from './profilna.jpg'
 
-const ProfilePicture = () => {
+const ProfilePicture = ({ avatarSrc, isAvatarToggled }) => {
   return (
     <div className='image-wrapper'>
-      <img src='https://st2.depositphotos.com/1009634/7235/v/600/depositphotos_72350117-stock-illustration-no-user-profile-picture-hand.jpg' alt="profile" />
+      <img src={!isAvatarToggled ? image : avatarSrc} alt="profile" />
     </div>
   );
 }

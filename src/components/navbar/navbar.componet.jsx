@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 
 import {
   BrowserRouter as Router,
@@ -14,18 +14,29 @@ import ProfilePage from '../../pages/profile/profile.component';
 import {Navbar, Nav, Button} from 'react-bootstrap'
 
 const NavigationBar = () => {
+
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
+
+  const loginUser = () => {
+    setUserLoggedIn(!userLoggedIn);
+  }
+
   return (
     <Router>
       <Fragment>  
         <Navbar bg="dark" variant="dark">
-          <Navbar.Brand as={Link} to="/home">Teletrader Crypto</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">Teletrader Crypto</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link as={Link} exact to="/home">Home</Nav.Link>
-              <Nav.Link as={Link} exact to="/profile">Profile</Nav.Link>
+              <Nav.Link as={Link} exact={true} to="/">Home</Nav.Link>
+              {
+                userLoggedIn && <Nav.Link as={Link} exact={true} to="/profile">Profile</Nav.Link>
+              }
             </Nav>
-            <Button>Login</Button>
+            {
+              !userLoggedIn && <Button onClick={loginUser}>Login</Button>
+            }
           </Navbar.Collapse>
         </Navbar>
       </Fragment>
