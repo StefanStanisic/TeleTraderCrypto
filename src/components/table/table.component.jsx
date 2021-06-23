@@ -2,8 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import { Table } from 'react-bootstrap';
 
-import './table.styles.css'
-
 const TableComponent = () => {
   const [btcToUSD, setBTCToUSD] = useState([]);
   const [btcToEUR, setBTCToEUR] = useState([]);
@@ -26,11 +24,24 @@ const TableComponent = () => {
     const isPopulated = Object.entries(pairRefs.current).filter((p) => p[1] === 0)
 
     if (isPopulated.length > 0) {
-      if (type === "BTCEUR") pairRefs.current.BTCEUR = object.chanId
-      if (type === "ETHUSD") pairRefs.current.ETHUSD = object.chanId
-      if (type === "BTCUSD") pairRefs.current.BTCUSD = object.chanId
-      if (type === "ETHEUR") pairRefs.current.ETHEUR = object.chanId
-      if (type === "EOSUSD") pairRefs.current.EOSUSD = object.chanId
+      switch(type) {
+        case "BTCEUR":
+          pairRefs.current.BTCEUR = object.chanId;
+          break;
+        case "ETHUSD":
+          pairRefs.current.ETHUSD = object.chanId
+          break;
+        case "BTCUSD":
+          pairRefs.current.BTCUSD = object.chanId
+          break;
+        case "ETHEUR":
+          pairRefs.current.ETHEUR = object.chanId
+          break;
+        case "EOSUSD":
+          pairRefs.current.EOSUSD = object.chanId
+          break;
+        default:
+      }
     }
 
     if(Array.isArray(object[1])) {
@@ -56,9 +67,9 @@ const TableComponent = () => {
   }
 
   useEffect(() => {
-    async function fetchData() {
+    function fetchData() {
       try {
-        const ws = await new WebSocket('wss://api-pub.bitfinex.com/ws/2');
+        const ws = new WebSocket('wss://api-pub.bitfinex.com/ws/2');
 
         ws.onopen = function () {
           let btcToUSD = JSON.stringify({

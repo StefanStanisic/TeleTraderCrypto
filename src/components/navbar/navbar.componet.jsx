@@ -8,7 +8,6 @@ import {
   Redirect
 } from "react-router-dom";
 
-
 import HomePage from '../../pages/homepage/homepage.component';
 import ProfilePage from '../../pages/profile/profile.component';
 
